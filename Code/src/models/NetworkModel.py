@@ -104,7 +104,6 @@ class NetworkModel(Model):
                 "total_FIAT_spent_buying": "total_FIAT_spent_buying",
                 "initial_buy_price": "initial_buy_price",
                 "b": "b",
-                # "mean_a": lambda a: np.mean(a.alphas) if len(a.alphas) < 0 else 0,
                 "max_a": "max_a",
                 "y": "y",
                 "CR": "CR",
@@ -283,7 +282,6 @@ class NetworkModel(Model):
 
         if _bought_count > 0:
             # Return the adoption ratio
-            # return _bought_count / self.schedule.get_agent_count()
             return _bought_count / self.num_initial_users
         else:
             return 0

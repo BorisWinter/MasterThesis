@@ -50,23 +50,12 @@ class AAdaptedUser(User):
         # Get current buy to rent ratio
         _price_to_rent = self.price_to_rents[-1]
 
-        # Calculate the weighted mean fluctuation ratio
-        # _a_length = len(self.alphas) if len(
-        #     self.alphas) < 100 else 100  # effect is negligable after 100
-        # _mean_alpha = np.average(
-        #     self.alphas[-_a_length:], weights=self.alpha_weights[-_a_length:])
-        # self.weighted_a = _mean_alpha
-
         # Keep adding mean fluctuation ratio to numerator
         _n = 1 + (_price_to_rent - (_price_to_rent % self.max_a))
         if _n <= _price_to_rent:
             _numerator = _n
         else:
             _numerator = _n - self.max_a
-
-        # _numerator = 1
-        # while (_numerator) <= _price_to_rent - self.max_a:
-        #     _numerator += self.max_a
 
         # Update y
         _y = _numerator / _price_to_rent
